@@ -1,7 +1,10 @@
 import PreviewBgImage from "../assets/imageRemovebgPpreview1.png"
 import look from "../assets/Vector.png"
+import { useState } from "react"
+import CreateNewNoteGroup from "../components/CreateNewNoteGroup"
 
 const PocketNotes = () => {
+
     return (
         <div className="pocket-notes">
             <div className="notes">
@@ -18,6 +21,7 @@ const PocketNotes = () => {
                 <img src={look}></img>
                 <p>end-to-end encrypted</p>
             </div>
+
         </div>
     )
 }

@@ -6,7 +6,7 @@ import NotesContext from "../Context/NotesContext";
 const NotesGroup = () => {
 
     const [para, setPara] = useState('')
-    const [data, , noteGroup,] = useContext(NotesContext)
+    const [data,setData , noteGroup,] = useContext(NotesContext)
     const [arr, setArr] = useState([])
     const [color, setColor] = useState()
 
@@ -30,7 +30,7 @@ const NotesGroup = () => {
         else {
             narr["data"] = [{ dateStamp: `${date.getDate() + "-" + months[date.getMonth()] + "-" + date.getFullYear()}`, timestamp: `${date.getHours() + ":" + date.getMinutes() + " " + newformat}`, data: para }]
         }
-
+        setData([...data])
         setArr(narr.data)
         setPara('')
     }
@@ -45,12 +45,12 @@ const NotesGroup = () => {
 
         <div className="notes-group" >
 
-            <h1 style={{ display: 'flex', backgroundColor: '#E8E8E8', padding: '20px', top: '-10px', width: '100%', marginTop: 0, height: '5vh' }}>
+            <h1 style={{ display: 'flex', backgroundColor: '#E8E8E8', padding: '20px', top: '-10px', width: '100%', marginTop: 0, height: '2.5vh' }}>
                 <h4 style={{ margin: '2px', fontSize: '20px' }}>{noteGroup[0].toUpperCase() + "" + noteGroup[noteGroup.length - 1].toUpperCase()}</h4>
                 <h3 style={{ textAlign: 'left', margin: '2px', fontSize: '20px', paddingLeft: '20px' }}>{noteGroup}</h3>
             </h1>
 
-            <div style={{ height: '55vh', overflowY: 'scroll' }}>
+            <div style={{ height: '62vh', overflowY: 'scroll' }}>
 
                 {arr?.map((item, index) => (
                     <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
