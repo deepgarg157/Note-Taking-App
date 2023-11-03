@@ -11,8 +11,9 @@ function App() {
   const [data, setData] = useState([])
   const [noteGroup, setNoteGroup] = useState('')
   console.log(data)
+  
   return (
-    <NotesContext.Provider value={[data, setData, setNoteGroup]}>
+    <NotesContext.Provider value={[data, setData, noteGroup, setNoteGroup]}>
       <div className="App">
         <CreateNotesGroup />
         {!noteGroup ? <PocketNotes /> : <NotesGroup />}

@@ -5,7 +5,7 @@ import { useContext, useState } from "react"
 
 const CreateNotesGroup = () => {
 
-    const [data,,setNoteGroup] = useContext(NotesContext)
+    const [data,,,setNoteGroup] = useContext(NotesContext)
     const [createNewGroup, setCreateNewGroup] = useState(false)
 
     const handleCreateNotesClick = () => {

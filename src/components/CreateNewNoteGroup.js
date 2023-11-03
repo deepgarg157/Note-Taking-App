@@ -5,11 +5,12 @@ const CreateNewNoteGroup = ({setCreateNewGroup}) => {
 
     const [inputText, setInputText] = useState('')
     const [color, setColor] = useState('purple')
-    const [data,setData]= useContext(NotesContext)
+    const [data,setData,,setNoteGroup]= useContext(NotesContext)
 
     const handleClick=()=>{
         setData([...data,{"name":inputText, 'bgColor' : color}])
         setCreateNewGroup(false)
+        setNoteGroup('')
     }
 
     const handleColor =(e)=>{
