@@ -2,13 +2,18 @@ import CreateNotesGroup from "./CreateNotesGroup";
 import next from "../assets/next.png";
 import { useContext, useEffect, useState } from "react";
 import NotesContext from "../Context/NotesContext";
+import back from "../assets/back.png"
 
 const NotesGroup = () => {
 
     const [para, setPara] = useState('')
-    const [data,setData , noteGroup,] = useContext(NotesContext)
+    const [data, setData, noteGroup, , , setSideBarCreateNote] = useContext(NotesContext)
     const [arr, setArr] = useState([])
     const [color, setColor] = useState()
+
+    const handleBack = () => {
+        setSideBarCreateNote(true)
+    }
 
     const handleEnterPara = () => {
 
@@ -45,6 +50,8 @@ const NotesGroup = () => {
 
         <div className="notes-group" >
 
+            <img src={back} className="back" onClick={handleBack}></img>
+
             <h1 style={{ display: 'flex', backgroundColor: '#E8E8E8', padding: '20px', top: '-10px', width: '100%', marginTop: 0, height: '2.5vh' }}>
                 <h4 style={{ margin: '2px', fontSize: '20px' }}>{noteGroup[0].toUpperCase() + "" + noteGroup[noteGroup.length - 1].toUpperCase()}</h4>
                 <h3 style={{ textAlign: 'left', margin: '2px', fontSize: '20px', paddingLeft: '20px' }}>{noteGroup}</h3>
@@ -67,13 +74,13 @@ const NotesGroup = () => {
             </div>
 
 
-            <div style={{ backgroundColor: '#E8E8E8', height: '29vh', width: '100%', marginBottom: '20px' }}>
+            <div className="text-container">
 
-                <textarea style={{ width: '95%', margin: '23px', height: '20vh', borderRadius: '9px', paddingLeft: '25px', paddingTop: '20px', fontSize: '20px' }} type="message" placeholder="Enter your text here..........." value={para} onChange={(e) => {
+                <textarea className="text-area" type="message" placeholder="Enter your text here..........." value={para} onChange={(e) => {
                     setPara(e.target.value)
                 }}></textarea>
 
-                <img src={next} className="enter" style={{ position: 'fixed', cursor: 'pointer', top: '620px', left: '1450px' }} onClick={handleEnterPara}></img>
+                <img src={next} className="enter" onClick={handleEnterPara}></img>
 
             </div>
 

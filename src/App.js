@@ -7,23 +7,40 @@ import NotesGroup from "./components/NotesGroup";
 
 
 function App() {
-  let initialArray=[]
-  if(localStorage.getItem('data')){
-    initialArray=JSON.parse(localStorage.getItem('data'))
+  let initialArray = []
+  if (localStorage.getItem('data')) {
+    initialArray = JSON.parse(localStorage.getItem('data'))
   }
   const [data, setData] = useState(initialArray)
-  
+
   const [noteGroup, setNoteGroup] = useState('')
-  console.log(data)
-  useEffect(()=>{
-    localStorage.setItem('data',JSON.stringify(data));
-  },[data])
-  
+
+  const [sideBarCreateNote, setSideBarCreateNote] = useState(true)
+
+  console.log(sideBarCreateNote)
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data])
+
   return (
-    <NotesContext.Provider value={[data, setData, noteGroup, setNoteGroup]} >
+    <NotesContext.Provider value={[data, setData, noteGroup, setNoteGroup, sideBarCreateNote, setSideBarCreateNote]} >
       <div className="App">
-        <CreateNotesGroup />
+
+
+        <div className="responsive-mobile">
+          {sideBarCreateNote ?<CreateNotesGroup /> : ""}
+        </div>
+
+        <div className="responsive-pc">
+          <CreateNotesGroup />
+        </div>
+    
+        
+      
         {!noteGroup ? <PocketNotes /> : <NotesGroup />}
+       
+
       </div>
     </NotesContext.Provider>
   );
